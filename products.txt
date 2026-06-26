@@ -1,0 +1,12 @@
+ID | Name | Prize
+
+1 | Tea | 10
+2 | Milk | 15
+3 | Cofee | 20
+4 | Boost | 20
+5 | Badham Milk | 20
+6 | Horlis | 20
+7 | Black Tea | 10
+8 | Black Cofee | 10
+9 | Green Tea | 20
+10 | Special Tea | 15
