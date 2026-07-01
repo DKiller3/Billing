@@ -23,7 +23,7 @@ dashboard() {
 
 # Low Stock Alert
 low_stock() {
-    echo "------ LOW STOCK ------" > lowstock.txt
+    echo "------ LOW STOCK ------" 
     awk -F'|' '$4 < 10 {print $2 " stock is low: " $4}' products.txt >> lowstock.txt
 
     cat lowstock.txt
@@ -33,7 +33,7 @@ low_stock() {
 daily_sales() {
     today=$(date +%d)
 
-    echo "------ TODAY SALES ------" > dailysale.txt
+    echo "------ TODAY SALES ------"
     grep "^$today|" bills.txt >> dailysale.txt
 
     cat dailysale.txt
@@ -41,7 +41,7 @@ daily_sales() {
 
 # Top Sales
 top_sales() {
-    echo "------ TOP SALES ------" > topsale.txt
+    echo "------ TOP SALES ------"
     cut -d'|' -f2 bill_items.txt | sort | uniq -c | sort -nr >> topsale.txt
 
     cat topsale.txt
