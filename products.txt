@@ -1,12 +1,13 @@
-ID | Name | Prize
 
-1 | Tea | 10
-2 | Milk | 15
-3 | Cofee | 20
-4 | Boost | 20
-5 | Badham Milk | 20
-6 | Horlis | 20
-7 | Black Tea | 10
-8 | Black Cofee | 10
-9 | Green Tea | 20
-10 | Special Tea | 15
+ID|Name|Prize|Stock
+-----------------------
+1|Tea|10|100
+2|Milk|15|100
+3|Coffee|20|100
+4|Boost|20|100
+5|Badham Milk|20|100
+6|Horlicks|20|100
+7|Black Tea|10|100
+8|Black Coffee|10|100
+9|Green Tea|20|100
+10|Special Tea|15|100

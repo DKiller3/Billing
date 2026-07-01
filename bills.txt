@@ -1,3 +1,5 @@
 #Date|ProductName|Total Amount
 
 26|Badham Milk|100
+30|Coffee|100
+30|Green Tea|100
