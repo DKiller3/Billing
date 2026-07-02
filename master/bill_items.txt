@@ -1,3 +1,4 @@
-#Date|ProductName|Quantity|TotalAmount
-Date : 01 | Product : Tea | Qty : 10 | Amount : Rs.100
-Date : 02 | Product : Tea | Qty : 10 | Amount : Rs.100
+#Date|Name|PhoneNo|ProductName|Quantity|TotalAmount
+2026-07-02 16:12|Tom|12345|Tea|10|100
+2026-07-02 16:14|tj|546|Tea|5|50
+2026-07-02 16:33|jerry|143|Tea|20|300

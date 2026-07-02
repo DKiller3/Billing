@@ -8,6 +8,8 @@ do
     echo "========= STOCK MENU ========="
     echo "1. View Product"
     echo "2. Restore Stock"
+    echo "3. App Price"
+    echo "4. Add Product"
     echo "0. Exit"
     echo "=============================="
 
@@ -16,9 +18,9 @@ do
     case $choice in
 
     1)
-        echo "Id | Name | Stock"
+        echo "Id | Name | Price | Stock"
         echo "-----------------------------"
-        grep "|" $Product | awk -F'|' '{print $1, $2, $4}'
+        grep "|" $Product | awk -F'|' '{print $1, $2, $3, $4}'
         ;;
 
     2)
@@ -42,10 +44,55 @@ do
         sed -i "s/^$pid|$name|$price|$stock/$pid|$name|$price|$new_stock/" $Product
 
         echo ""
+        echo "Old stock = $stock"
+        echo "Add stock = $add_stock"
         echo "$name $add_stock - stock updated successfully!"
         echo "New Stock Count = $new_stock"
         ;;
 
+3)
+read -p "Enter Product ID: " pid
+
+product=$(grep "^$pid|" $Product)
+
+if [ -z "$product" ]; then
+    echo "Invalid Product ID!"
+    continue
+fi
+
+name=$(echo "$product" | cut -d'|' -f2 | xargs)
+price=$(echo "$product" | cut -d'|' -f3 | xargs)
+stock=$(echo "$product" | cut -d'|' -f4 | xargs)
+
+echo "Current Price: $price"
+read -p "Enter New Price: " new_price
+
+sed -i "s/^$pid|$name|$price|$stock/$pid|$name|$new_price|$stock/" $Product
+
+echo ""
+echo "$name price updated successfully!"
+echo "Old Price = $price"
+echo "New Price = $new_price"
+        ;;
+
+      4)
+	read -p "Enter New Product ID: " pid
+
+         product=$(grep "^$pid|" $Product)
+
+         if [ ! -z "$product" ]; then
+         echo "Product ID already exists!"
+         return
+         fi
+
+         read -p "Enter Product Name: " pname
+         read -p "Enter Product Price: " price
+         read -p "Enter Product Stock: " stock
+
+         echo "$pid|$pname|$price|$stock" >> $Product
+
+         echo "New Product Added Successfully!"
+          ;;
     0)
         echo "Exiting..."
         break

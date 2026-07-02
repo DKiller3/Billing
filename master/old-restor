@@ -1,6 +1,26 @@
 
 Product=/home/killer/demo/BillingSystem/client/products.txt
 
+# Product
+
+    read -p "Enter Product ID to update: " pid
+
+    product=$(grep "^$pid|" $PD)
+
+    if [ -z "$product" ]; then
+        echo "Product not found!"
+        return
+    fi
+
+    read -p "New Product Name: " new_name
+    read -p "New Price: " new_price
+    read -p "New Stock: " new_stock
+
+    sed -i "s/^$pid|.*/$pid|$new_name|$new_price|$new_stock/" $PD
+
+    echo "Product Updated Successfully!"
+
+
 
 # View_Product
 

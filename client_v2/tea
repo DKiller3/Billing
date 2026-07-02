@@ -3,27 +3,34 @@
 BI=/home/killer/demo/BillingSystem/master/bill_items.txt
 PD=/home/killer/demo/BillingSystem/master/products.txt
 
-# View Products
-#view_products() {
-    echo "-----------------------------"
-    echo "ID | Name | Price | Stock"
     echo "-----------------------------"
     cat $PD
     echo "-----------------------------"
-#}
 
 # Order Function
 Your_order() {
 
     total=0
-    bill_id=$(date +%d)
+    bill_id=$(date "+%Y-%m-%d %H:%M")
 
     while true
     do
-    read -p "Enter Product ID (0 to stop): " pid
+        read -p "Enter Product ID (0 to Bill): " pid
 
         if [ "$pid" -eq 0 ]; then
-            break
+
+        echo "Enter Customer Details"
+
+    read -p "Customer Name: " cname
+    read -p "Customer Mobile: " cmobile
+
+    echo "$bill_id|$cname|$cmobile|$name|$qty|$amount" >> $BI
+
+    echo "Added -> $name * $qty = Rs.$amount"
+    echo ""
+    echo "Thank You"
+
+  break
         fi
 
         product=$(grep "^$pid|" $PD)
@@ -44,49 +51,43 @@ Your_order() {
             continue
         fi
 
-        new_stock=$(( stock - qty ))
-        amount=$(( price * qty ))
-        total=$(( total + amount ))
+        new_stock=$((stock - qty))
+        amount=$((price * qty))
+        total=$((total + amount))
 
-# Update stock
+        # Update stock
         sed -i "s/^$pid|$name|$price|$stock/$pid|$name|$price|$new_stock/" $PD
 
-# Save bill
-        echo "Date : $bill_id | Product : $name | Qty : $qty | Amount : Rs.$amount" >> $BI
-
-        echo "Added -> $name * $qty = Rs.$amount"
     done
+}
 
 # Total Bill
 
 Total_Bill() {
 
-    echo "------ FINAL BILL ------"
-    grep "Date : $bill_id" $BI
-    echo "Total Bill: Rs.$total"
-}
+echo "Added -> $name * $qty = Rs.$amount"
 
-}
+    echo "------ BILL HISTORY ------"
 
+    cat $BI
+}
 
 # Main Menu
 while true
 do
     echo ""
     echo "========= TEA SHOP ========="
-    echo "1. View Menu"
-    echo "2. Your Order"
-    echo "3. Total Bill"
-    echo "4. Exit"
+    echo "1. Your Order"
+    echo "2. Total Bill"
+    echo "3. Exit"
     echo "============================"
 
     read -p "Choose Option: " choice
 
     case $choice in
-        1) view_products ;;
-        2) Your_order ;;
-        3) Total_Bill ;;
-        4) exit ;;
-        *) echo "Invalid Option , you have options 1 , 2 , 3" ;;
+        1) Your_order ;;
+        2) Total_Bill ;;
+        3) exit ;;
+        *) echo "Invalid Option!" ;;
     esac
-done 
+done

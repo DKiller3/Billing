@@ -1,7 +1,7 @@
 
-ID|Name|Prize|Stock
------------------------
-1|Tea|10|100
+#ID|Name|Prize|Stock
+#-----------------------
+1|Tea|15|100
 2|Milk|15|100
 3|Coffee|20|100
 4|Boost|20|100
