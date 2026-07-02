@@ -1,0 +1,37 @@
+
+Product=/home/killer/demo/BillingSystem/client/products.txt
+
+
+# View_Product
+
+    echo "Id | Name | Stock"
+    echo "-----------------------------"
+    grep "|" $Product | awk -F'|' '{print $1, $2, $4}'
+
+
+# Restore Stock
+
+
+    read -p "Enter Product ID: " pid
+
+    product=$(grep "^$pid|" $Product)
+
+    if [ -z "$product" ]; then
+        echo "Invalid Product ID!"
+        return
+    fi
+
+    name=$(echo "$product" | cut -d'|' -f2 | xargs)
+    price=$(echo "$product" | cut -d'|' -f3 | xargs)
+    stock=$(echo "$product" | cut -d'|' -f4 | xargs)
+
+    read -p "Enter Stock to Add: " add_stock
+
+    new_stock=$(( stock + add_stock ))
+
+    sed -i "s/^$pid|$name|$price|$stock/$pid|$name|$price|$new_stock/" $Product
+    echo ""
+    echo "$name stock updated successfully!"
+    echo ""
+    echo "New Stock: $new_stock"
+

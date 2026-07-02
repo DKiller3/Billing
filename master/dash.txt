@@ -1,0 +1,55 @@
+# Dashboard
+
+total_products=$(wc -l < products.txt)
+
+total_sales=$(awk -F'Rs.' '{sum+=$2} END {print sum}' bill_items.txt)
+
+today=$(date +%d)
+
+todaysale=$(grep "Date : $today" bill_items.txt | awk -F'Rs.' '{sum+=$2} END {print sum}')
+
+echo "------ DASHBOARD ------"
+echo "Total Products : $total_products"
+echo "Total Sales    : Rs.$total_sales"
+echo "Today Sales    : Rs.$todaysale"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Dashboard
+
+#    total_products=$(cat /home/killer/demo/BillingSystem/client/products.txt | wc -l)
+ #   total_sales=$(awk -F'|' '{sum+=$3} END {print sum}' ~/demo/BillingSystem/client/bills.txt)
+  #  todaysale=$(today=$(date +%d) | grep "^$today|" ~/demo/BillingSystem/client/bills.txt)
+
+
+
+
+   # echo "------ DASHBOARD ------" 
+    #echo "Total Products : $total_products"
+    #echo "Total Sales    : Rs.$total_sales" 
+    #echo "Today Sales    : $todaysale"
+    
+
+
+
+
+
+
+
+

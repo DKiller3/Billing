@@ -1,0 +1,3 @@
+#Date|ProductName|Quantity|TotalAmount
+Date : 01 | Product : Tea | Qty : 10 | Amount : Rs.100
+Date : 02 | Product : Tea | Qty : 10 | Amount : Rs.100

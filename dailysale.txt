@@ -1,4 +1,0 @@
-30|Coffee|100
-30|Green Tea|100
-30|Coffee|100
-30|Green Tea|100
